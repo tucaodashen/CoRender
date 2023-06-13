@@ -4,6 +4,8 @@ import command
 import blender
 import synthesis
 blenderversion = os.listdir("blender")
+if len(blenderversion) == 0:
+    blenderversion=[" "]
 project = os.listdir("project")
 
 choseblender = [
@@ -108,8 +110,13 @@ def interface():
         def refreshdir(dirname="blender"): #获取版本
             global model
             blenderversion = os.listdir("blender")
-            return fil.update(choices=blenderversion, value=blenderversion[0])
-        referesh.click(fn=refreshdir,inputs=url,outputs=fil)
+            if len(blenderversion) == 0:
+                blenderversion=[" "]
+            poj = os.listdir("project")
+            if len(poj) == 0:
+                poj=[" "]
+            return fil.update(choices=blenderversion, value=blenderversion[0]),pro.update(choices=poj, value=blenderversion[0])
+        referesh.click(fn=refreshdir,inputs=url,outputs=[fil,pro])
         vdownload.click(blender.preve,version,downlog)
         download.click(blender.manulpreve,[url],[log])
         sysst.click(synthesis.commandffmpeg,[inputname,mbps,outname,inputsort,rate,audio],[relog])

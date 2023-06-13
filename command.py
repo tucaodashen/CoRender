@@ -43,8 +43,11 @@ def rendercommand(
     framenumber = ""
     imagepath=""
     read=False
-    for file in os.listdir('project/out/'):
-        os.remove(os.path.join('project/out/', file))
+    try:
+        for file in os.listdir('project/out/'):
+            os.remove(os.path.join('project/out/', file))
+    except:
+        print("不完全删除")
     image_arr = np.zeros((1,1),np.uint8)
     current_file_path = os.path.dirname(os.path.abspath(__file__))
     if amine:#确认渲染格式

@@ -1,13 +1,24 @@
 import os
-os.mkdir("blender")
-os.mkdir("unzip")
-os.mkdir("project")
-os.mkdir("project/out")
+if os.path.exists("blender"):
+    pass
+else:
+    os.mkdir("blender")
+if os.path.exists("unzip"):
+    pass
+else:
+    os.mkdir("unzip")
+if os.path.exists("project"):
+    pass
+else:
+    os.mkdir("project")
+if os.path.exists("project/out"):
+    pass
+else:
+    os.mkdir("project/out")
 import gradioui
 
-try:
 
-    gradioui.interface()
-except:
-    print("启动失败")
+
+gradioui.interface()
+
 
